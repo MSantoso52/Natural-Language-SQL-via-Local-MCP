@@ -1,5 +1,6 @@
 # Natural-Language-SQL-via-Local-MCP
 SQL querying using natural language through local MCP and  ollama
+
 https://github.com/user-attachments/assets/f8470f42-efa5-4c94-9976-c048f515c3e7
 
 ## Project Overview
