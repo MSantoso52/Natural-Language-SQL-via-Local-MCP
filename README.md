@@ -27,6 +27,19 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
   ```
 
 * PostgreSQL 14+ — Running local or containerized database instance with target data.
+  ```bash
+  docker run -d \
+  --name pgduckdb \
+  -p 5432:5432 \
+  -e POSTGRES_PASSWORD=duckdb \
+  pgduckdb/pgduckdb:17-main
+
+  psql -h localhost -U postgres -d postgres
+
+  docker ps
+  CONTAINER ID   IMAGE                       COMMAND                  CREATED        STATUS        PORTS      NAMES
+  c1b2fc5d017e   pgduckdb/pgduckdb:16-main   "docker-entrypoint.s…"   2 months ago   Up 15 hours   5432/tcp   hardcore_boyd
+  ```
 
 * Ollama — Installed and running locally with a pulled chat/SQL-capable model (e.g., gemma2:2b or qwen2.5-coder).
 
