@@ -82,6 +82,24 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
   ```
 
 ## Project Flow
+* Expose the postgreql database to be accessibled
+  ```bash
+  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' hardcore_boyd
+  172.17.0.2
+
+  ...
+  # Database confiiguration
+  DB_HOST = os.getenv("DB_HIST", "172.17.0.2")
+  ... 
+  ```
+* Build the MCP server
+  ```bash
+  nvim mcp_server.py
+  ```
+* Build Web App with Streamlit for MCP chat to PostgreSQL
+  ```bash
+  nvim app.py
+  ```
 
 ## Pros And Cons
 ### Pros
