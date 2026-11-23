@@ -20,7 +20,7 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
 ## Prerequisites And Requirement
 * Python 3.10+ — Runtime for the MCP server, client, and Streamlit app.
   ```bash
-  sudo pacman -S python
+  sudo pacman -S python3
 
   python3 --version
   Python 3.14.10
