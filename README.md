@@ -42,6 +42,17 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
   ```
 
 * Ollama — Installed and running locally with a pulled chat/SQL-capable model (e.g., gemma2:2b or qwen2.5-coder).
+  ```bash
+  sudo pacman -S ollama
+
+  ollama --version
+  ollama version is 0.33.3
+
+  ollama pull gemma2:2b
+
+  ollama ls | grep gemma2
+  gemma2:2b                  8ccf136fdd52    1.6 GB    2 months ago
+  ```
 
 * Python Libraries — mcp, streamlit, psycopg2-binary (or psycopg), ollama, and pandas.
 
