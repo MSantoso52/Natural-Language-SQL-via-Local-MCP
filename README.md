@@ -89,7 +89,7 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
 
   ...
   # Database confiiguration
-  DB_HOST = os.getenv("DB_HIST", "172.17.0.2")
+  DB_HOST = os.getenv("DB_HOST", "172.17.0.2")
   ... 
   ```
 * Build the MCP server
