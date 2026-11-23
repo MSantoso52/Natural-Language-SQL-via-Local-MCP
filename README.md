@@ -1,5 +1,6 @@
 # Natural-Language-SQL-via-Local-MCP
 SQL querying using natural language through local MCP and  ollama
+https://github.com/user-attachments/assets/f8470f42-efa5-4c94-9976-c048f515c3e7
 
 ## Project Overview
 A local, privacy-first data exploration workspace that lets you query a **PostgreSQL** database using natural language via the **Model Context Protocol (MCP)**, powered by local **Ollama** models and a **Streamlit** interface. It exposes live database schema inspection and read-only SQL execution as MCP tools so an LLM can translate questions into SQL, run queries locally without sending data to external APIs, and surface results interactively.
