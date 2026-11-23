@@ -32,7 +32,7 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
   --name pgduckdb \
   -p 5432:5432 \
   -e POSTGRES_PASSWORD=duckdb \
-  pgduckdb/pgduckdb:17-main
+  pgduckdb/pgduckdb:16-main
 
   psql -h localhost -U postgres -d postgres
 
