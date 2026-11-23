@@ -55,8 +55,31 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
   ```
 
 * Python Libraries — mcp, streamlit, psycopg2-binary (or psycopg), ollama, and pandas.
+  ```bash
+  python3 -m pip install psycopg2-binary mpc streamlit --break-system-packages
+
+  streamlit version
+  Streamlit, version 1.66.0
+  ```
 
 * System Resources — At least 8 GB RAM (16 GB recommended) to run the local LLM alongside PostgreSQL.
+  ```bash
+  lscpu
+  Architecture:                x86_64
+    CPU op-mode(s):            32-bit, 64-bit
+    Address sizes:             39 bits physical, 48 bits virtual
+    Byte Order:                Little Endian
+  CPU(s):                      4
+    On-line CPU(s) list:       0-3
+  Vendor ID:                   GenuineIntel
+    Model name:                Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+  ...
+
+  cat /proc/meminfo
+  MemTotal:       16088100 kB
+  MemFree:         8056312 kB
+  MemAvailable:   11801652 kB
+  ```
 
 ## Project Flow
 
