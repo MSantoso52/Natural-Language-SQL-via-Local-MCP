@@ -18,6 +18,21 @@ A local, privacy-first data exploration workspace that lets you query a **Postgr
 * Hallucinated SQL Queries: Standalone LLMs often generate invalid queries with wrong column or table names when they lack live, structured access to actual database metadata.
 
 ## Prerequisites And Requirement
+* Python 3.10+ — Runtime for the MCP server, client, and Streamlit app.
+  ```bash
+  sudo pacman -S python
+
+  python3 --version
+  Python 3.14.10
+  ```
+
+* PostgreSQL 14+ — Running local or containerized database instance with target data.
+
+* Ollama — Installed and running locally with a pulled chat/SQL-capable model (e.g., gemma2:2b or qwen2.5-coder).
+
+* Python Libraries — mcp, streamlit, psycopg2-binary (or psycopg), ollama, and pandas.
+
+* System Resources — At least 8 GB RAM (16 GB recommended) to run the local LLM alongside PostgreSQL.
 
 ## Project Flow
 
