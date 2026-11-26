@@ -43,12 +43,15 @@ def get_db_config() -> dict:
     }
 
 def get_connection():
+    cfg=get_db_config()
     return psycopg2.connect(
-        host=DB_HOST,
-        port=DB_PORT,
-        database=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD
+        host=cfg["host"],
+        port=cfg["port"],
+        database=cfg["database"],
+        user=cfg["user"],
+        password=cfg["password"],
+        connect_timeout=10,
+        option=f"-c statement_timeout={cfg['timeout_ms']}",
     )
 
 
