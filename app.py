@@ -146,20 +146,4 @@ with tab2:
         if st.button("Execute Query") and sql_input:
             res = asyncio.run(run_mcp_action("run_select_query", {"query": sql_input}))
             st.code(res)
-
-
-            # with st.spinner("Fetching database metadata via MCP & querying Gemma2:2b..."):
-            #   mcp_tables = asyncio.run(run_mcp_action("list_tables"))
-        
-            #   augmented_prompt = f"""You are an expert Data Engineer assistant.
-            #                      Database tables from MCP server:
-            #                        {mcp_tables}
-            #
-            #                        User Request: {user_prompt}
-
-            #                       Provide appropriate SQL query if requested, then execute it by feed into run_mcp_action function to get the result.
-            #                       """
-            #    ai_response = query_ollama(augmented_prompt)
-            #    st.markdown("### AI Response:")
-            #    st.write(ai_response)
-           
+          
