@@ -2,16 +2,42 @@ import os
 import psycopg2
 from mcp.server.mcpserver import MCPServer
 
+# Load .env from the same directory as this script (does not overwrite existing OS env vars)
+ENV_PATH = Path(__file__).resolve().parent / ".env"
+load_dotenv(dotenv_path=ENV_PATH, override=False)
+
 # Initialize MCP server
 mcp = MCPServer("PostgresDataServer")
 
-# Database configuration
-DB_HOST = os.getenv("DB_HOST", "172.17.0.2")
-DB_PORT = os.getenv("DB_PORT", "5432")
-DB_NAME = os.getenv("DB_NAME", "employee")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "duckdb")
+REQUIRED_ENV_VARS = ("DB_HOST", "DB_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD")
+FORBIDDEN_SQL_PATTERN = re.compile(
+    r"\b(insert|update|delete|drop|alter|truncate|create|grant|revoke|copy|vacuum|analyze|reindex|call|do)\b",
+    re.IGNORECASE,
+)
 
+def get_db_config() -> dict:
+    """Validate and return required database credentials from the environment."""
+    missing = [var for var in REQUIRED_ENV_VARS if not os.getenv(var)]
+    if missing:
+        raise RuntimeError(
+            f"Missing required environment variables: {', '.join(missing)}. "
+            "Set them in your .env file or environment."
+        )
+
+    try:
+        port = int(os.getenv("DB_PORT", "5432"))
+        timeout_ms = int(os.getenv("DB_STATEMENT_TIMEOUT_MS", "5000"))
+    except ValueError as exc:
+        raise RuntimeError("DB_PORT and DB_STATEMENT_TIMEOUT_MS must be integers.") from exc
+
+    return {
+        "host": os.getenv("DB_HOST"),
+        "port": port,
+        "dbname": os.getenv("DB_NAME"),
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASSWORD"),
+        "timeout_ms": max(100, timeout_ms),
+    }
 
 def get_connection():
     return psycopg2.connect(
