@@ -47,11 +47,11 @@ def get_connection():
     return psycopg2.connect(
         host=cfg["host"],
         port=cfg["port"],
-        database=cfg["database"],
+        dbname=cfg["dbname"],
         user=cfg["user"],
         password=cfg["password"],
         connect_timeout=10,
-        option=f"-c statement_timeout={cfg['timeout_ms']}",
+        options=f"-c statement_timeout={cfg['timeout_ms']}",
     )
 
 
